@@ -153,6 +153,12 @@ brew services restart postgresql
 brew_install_or_upgrade 'phantomjs'
 
 brew_install_or_upgrade 'hub'
+brew_install_or_upgrade 'elasticsearch'
+ln -sfv /usr/local/opt/elasticsearch/*.plist ~/Library/LaunchAgents
+
+brew_install_or_upgrade 'redis'
+ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+
 # shellcheck disable=SC2016
 append_to_file "$HOME/.zshrc" 'eval "$(hub alias -s)"'
 
