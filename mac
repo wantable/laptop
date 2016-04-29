@@ -147,17 +147,22 @@ brew_install_or_upgrade 'git'
 brew_tap 'gapple/services'
 
 brew_install_or_upgrade 'postgresql'
-fancy_echo 'Restarting postgres...'
-brew services restart postgresql
+mkdir -p ~/Library/LaunchAgents
+ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 
 brew_install_or_upgrade 'phantomjs'
 
 brew_install_or_upgrade 'hub'
+
+brew_install_or_upgrade 'Caskroom/cask/java'
 brew_install_or_upgrade 'elasticsearch'
 ln -sfv /usr/local/opt/elasticsearch/*.plist ~/Library/LaunchAgents
+launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist
 
 brew_install_or_upgrade 'redis'
 ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+launchctl load -w ~/Library/LaunchAgents/redis.mxcl.elasticsearch.plist
 
 # shellcheck disable=SC2016
 append_to_file "$HOME/.zshrc" 'eval "$(hub alias -s)"'
