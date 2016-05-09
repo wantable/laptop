@@ -171,7 +171,7 @@ if ! command -v rbenv >/dev/null; then
     fi
   fi
 fi
-
+source ~/.rvm/scripts/rvm
 fancy_echo 'Updating Rubygems...'
 gem update --system
 
